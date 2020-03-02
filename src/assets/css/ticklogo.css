@@ -1,4 +1,12 @@
 .ticklogo{
     float: right;
     margin-right:-80px;
+    cursor: pointer;
+    
+}
+.ticklogo:hover{
+    cursor: pointer;
+}
+.hover{
+    cursor: pointer;
 }

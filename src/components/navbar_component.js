@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom';
 export default class Navbar extends Component{
     handleLogout = () => {
         localStorage.removeItem('authToken');
+        localStorage.removeItem('name');
     }
 
     render() {
         return (
             <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-                <Link to="/exercises" className="navbar-brand">ToDoTracker</Link>
+    <Link to="/exercises" className="navbar-brand">ToDoTracker</Link>
+                
                 <div className="collapse navbar-collapse">
                     <ul className="navbar-nav mr-auto">
                         <li className="navbar-item">

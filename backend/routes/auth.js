@@ -15,9 +15,9 @@ const auth = require('../middlewares/auth');
 
 
 // @route POST /auth
-// @desc AUTH USER
+// @desc AUTH USER, JWT sign token
 // @access Public 
-// Route for Adding users
+
 router.route('/').post((req, res) => {
     //destructuring to get properties of req object
     const { email, password } = req.body;
@@ -67,7 +67,9 @@ router.route('/').post((req, res) => {
 
 });
 
-
+// @route GET /auth/user/:id
+// @desc Getting user details with authentication
+// @access Private
 
 router.get('/user/:id', auth, (req, res) => {
     

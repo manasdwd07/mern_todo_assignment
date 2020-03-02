@@ -16,7 +16,7 @@ export class create_exercise_component extends Component {
             
             users:[]
         }
-        // this.onChangeUsername = this.onChangeUsername.bind(this);
+       
         this.onChangeDescription = this.onChangeDescription.bind(this);
         this.onChangeDuration = this.onChangeDuration.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
@@ -25,17 +25,7 @@ export class create_exercise_component extends Component {
         
     }
 
-    // componentWillMount() {
-    //     axios.get('http://localhost:5000/users/')
-    //         .then(res => {
-    //             if (res.data.length > 0) {
-    //                 this.setState({
-    //                     users: res.data.map(user => user.name),
-    //                     username:res.data[0].name
-    //             })
-    //         }
-    //     })
-    // }
+   
 
    
 
@@ -71,13 +61,10 @@ export class create_exercise_component extends Component {
 
        
         
-        axios.post('http://localhost:5000/exercises/add',exercise, {headers:{
-            Authorization:"Bearer "+localStorage.getItem('authToken')
-        }})
+        axios.post('http://localhost:5000/exercises/add',exercise)
             .then(res => console.log(res.data));
         this.props.history.push('/exercises');
         
-        //  window.location='/exercises';   
         
     }
     render() {

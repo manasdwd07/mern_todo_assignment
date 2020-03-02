@@ -14,6 +14,9 @@ const auth = require('../middlewares/auth');
 
 
 // Route for getting users from db
+// @route GET /users
+// @desc Gets the list of users
+// @access Public
 router.route('/').get((req, res) => {
     User.find()
         .then(users => res.json(users))
@@ -22,6 +25,9 @@ router.route('/').get((req, res) => {
 
 
 // Route for Adding users
+// @route POST /exercises
+// @desc CREATE or add user
+// @access Public
 router.route('/add').post(auth, (req, res) => {
     //destructuring to get properties of req object
     const { name, email, password, confirmpassword } = req.body;

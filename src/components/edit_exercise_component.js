@@ -26,7 +26,7 @@ export class edit_exercise_component extends Component {
     }
 
     
-
+    // Gets values for specific todo being edited
     componentDidMount() {
         axios.get('http://localhost:5000/exercises/' + this.props.match.params.id,{})
             .then(res => {
@@ -43,28 +43,28 @@ export class edit_exercise_component extends Component {
             
     }
 
- 
+    // Getting Description input from user
     onChangeDescription(e) {
         this.setState({
             description:e.target.value
         })
     }
-
+    // Getting Duration input from user
     onChangeDuration(e) {
         this.setState({
             duration: e.target.value
         });
     }
-
+    // Getting Date input from user
     onChangeDate(date) {
         this.setState({
             date: date
         });
     }
 
+    // Submit Handler of 'Edit Todo' 
     onSubmit(e) {
-        // e.preventDefault();
-
+        
         let exercise = {
             
             description: this.state.description,
@@ -73,7 +73,7 @@ export class edit_exercise_component extends Component {
             status:this.state.status
         }
 
-        
+        // updating the todo with PUT method
         axios.put('http://localhost:5000/exercises/update/'+this.props.match.params.id,
          exercise)
             .then(res => console.log(res.data))

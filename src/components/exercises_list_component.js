@@ -4,7 +4,6 @@ import axios from 'axios';
 import Navbar from './navbar_component';
 import ticklogo from '../assets/images/download-1013981__340.webp';
 import '../assets/css/ticklogo.css';
-
 import sweetalert2 from 'sweetalert2';
 
 
@@ -14,11 +13,11 @@ import sweetalert2 from 'sweetalert2';
 
 
 
-// ----------------------
-// export const Exercise = props => {
-    export function Exercise(props){
-    const [count,setCount]=useState(0);
-    // renderExercise=()=>{setCount(count+1)}
+// Exercise -->Functional Component that returns a single row of pending todo
+
+    export const Exercise=(props)=>{
+    
+    // Pre-checking the status of the particular todo
     if(props.exercise.status==='pending'){    
     return (
        
@@ -43,8 +42,9 @@ import sweetalert2 from 'sweetalert2';
 
 
 
-
+// CompletedExercise --> Functional component which returns a single row of completed todo data
 export const CompletedExercise = props => {
+    // Pre-checking the status of a particular todo
     if(props.exercise.status==='done'){
         return (
             <tr>
@@ -69,6 +69,7 @@ export const CompletedExercise = props => {
 
 
 
+// exercises_list_component for displaying both the Pending todos and Completed todos
 
 export class exercises_list_component extends Component {
     constructor(props) {
@@ -96,9 +97,10 @@ export class exercises_list_component extends Component {
         this.todoList();
     }   
 
+    // Initialize method to display list of todos 
     todoList=()=>{
         
-        
+        // Getting all todos from api
         axios.get('http://localhost:5000/exercises/')
         .then(res => {
             
@@ -110,7 +112,7 @@ export class exercises_list_component extends Component {
     }
     
 
-    // For changing status of pending items to done
+    // For changing status of "pending" items to "done"
 
     statusChange(id){
         axios.put(`http://localhost:5000/exercises/updateStatus/${id}`,{status:'done'})
@@ -183,6 +185,7 @@ export class exercises_list_component extends Component {
         return (
             <div>
                 <Navbar/>
+        <h1 className="text-primary text-center name" style={{"font-family":"'tangerine',serif"}}> {localStorage.getItem('name')}</h1>
                 <h3>Pending ToDo's </h3>
                 <table className="table">
                     <thead className="thead-light">

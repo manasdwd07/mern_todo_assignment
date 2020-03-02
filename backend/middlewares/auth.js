@@ -1,5 +1,11 @@
 const jwt = require('jsonwebtoken');
 
+// Middlewares which checks for user token in request header
+
+
+// @middleware 
+// @desc Authenticating user with JWT
+// access Public
 function auth(req, res, next) {
     const header = req.headers['authorization'];
     const token = header.split(' ')[1];

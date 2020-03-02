@@ -36,23 +36,19 @@ export class sign_in_component extends Component {
         }
         axios.post('http://localhost:5000/auth',userInput)
         .then(res=>{
-            
-            
-        sweetalert2.fire({
+            sweetalert2.fire({
             "title":'Login successful',
             'text':'Enjoy ToDo Tracker',
             "icon": 'success',
-        }
-        )
-
-        
-        
-        
-        console.log('res.data.tokenres.data.token', res.data.token);
+        })
+        console.log('RES DEKHO BHAI'+JSON.stringify(res.data.user.name));
+        localStorage.setItem('name',res.data.user.name);
         localStorage.setItem('authToken',res.data.token)
         this.props.history.push('/exercises');
-    })
+        })
         .catch(err=>{
+            console.log('ERR pakdi hai' +err);
+            
             sweetalert2.fire({
                 "title":"Invalid credentials",
                 "text":"Oops.... I could'nt find you",

@@ -8,7 +8,8 @@ const jwt = require('jsonwebtoken');
 // access Public
 function auth(req, res, next) {
     const header = req.headers['authorization'];
-    const token = header.split(' ')[1];
+    const bearer = header.split(' ');
+    const token=bearer[1];
 
     // Check for token
     if (!token) {

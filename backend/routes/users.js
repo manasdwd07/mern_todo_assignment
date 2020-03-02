@@ -28,7 +28,7 @@ router.route('/').get((req, res) => {
 // @route POST /exercises
 // @desc CREATE or add user
 // @access Public
-router.route('/add').post(auth, (req, res) => {
+router.route('/add').post( (req, res) => {
     //destructuring to get properties of req object
     const { name, email, password, confirmpassword } = req.body;
 
